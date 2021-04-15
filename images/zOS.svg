@@ -1,0 +1,69 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="372" height="372" viewBox="0 0 372 372">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4178be;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #4178be;
+        stroke-miterlimit: 10;
+        stroke-width: 2.04px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M193.87,387.85c-102.6,0-186-83.4-186-186s83.4-186,186-186,186,83.4,186,186S296.38,387.85,193.87,387.85Zm0-369c-100.9,0-183,82.1-183,183s82.1,183,183,183,183-82.1,183-183S294.78,18.85,193.87,18.85Z" transform="translate(-7.87 -15.85)"/>
+  <path class="cls-2" d="M140.32,309,247.43,94.75M226,137.59,108.2,266.11V309H279.56V266.11H161.75m0,0L279.56,137.59V94.75H108.2v42.84H226M161.75,266.11,279.56,309M226,137.59,108.2,94.75M140.32,309,108.2,266.11M247.43,94.75l32.13,42.84" transform="translate(-7.87 -15.85)"/>
+<script xmlns="">try {
+                        Object.defineProperty(screen, "availTop", { value: 0 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "availLeft", { value: 0 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "availWidth", { value: 1920 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "availHeight", { value: 1080 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "colorDepth", { value: 24 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "pixelDepth", { value: 24 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(navigator, "hardwareConcurrency", { value: 8 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(navigator, "appVersion", { value: "5.0 (Windows)" });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(navigator, "doNotTrack", { value: "unspecified" });
+                    } catch (e) {}
+                    
+            try {
+                window.screenY = 0
+            } catch (e) { }
+        
+            try {
+                window.screenTop = 0
+            } catch (e) { }
+        
+            try {
+                window.top.window.outerHeight = window.screen.height
+            } catch (e) { }
+        
+            try {
+                window.screenX = 956
+            } catch (e) { }
+        
+            try {
+                window.screenLeft = 956
+            } catch (e) { }
+        
+            try {
+                window.top.window.outerWidth = 969
+            } catch (e) { }
+        </script></svg>

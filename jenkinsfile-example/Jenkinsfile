@@ -1,0 +1,69 @@
+def artifactoryServer = Artifactory.server '<artifactory server id>'
+
+pipeline {
+    agent {
+        node {
+            label '<z/OS AGENT>'
+            customWorkspace "workspace/<artifactory repository>/${env.BRANCH_NAME}/${env.BUILD_ID}"
+        }
+    }
+    
+    options {
+        ansiColor('css')
+    }
+  
+    environment {
+
+        //***GIT VARAIBLES***
+        COMMIT_SHORT = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").toUpperCase()
+
+        //***ARTIFACTORY VARIABLES***
+        SOURCE_ARTIFACT = "<name of source artifact>.tgz"
+        ARTIFACTORY_ARTIFACT = "<name of target artifact>.tgz"
+
+        //paths on NRVN1
+        ARTIFACTS_TO_UPLOAD_DIR = "$env.WORKSPACE/artifacts-to-upload"
+        DOWNLOADED_ARTIFACTS_DIR = "$env.WORKSPACE/dowloaded-artifacts"
+        
+        ARTIFACTORY_REPO = "<artifactory repository>"
+
+        ARTIFACTORY_UPLOAD_SPEC = """{
+			"files": [
+        		{
+        			"pattern": "${ARTIFACTS_TO_UPLOAD_DIR}/${SOURCE_ARTIFACT}",
+        			"target": "${ARTIFACTORY_REPO}/${ARTIFACTORY_ARTIFACT}"
+        		}
+			]
+		}"""
+        ARTIFACTORY_DOWNLOAD_SPEC = """{
+ 			"files": [
+  				{ 
+      				"pattern": "${ARTIFACTORY_REPO}/${ARTIFACTORY_ARTIFACT}",
+        			"target": "${DOWNLOADED_ARTIFACTS_DIR}/"
+    			}
+ 			]
+		}"""
+    }
+
+    stages {
+        
+        stage('Upload compressed build output dataset to Artifactory Server') {
+        	steps {
+                sh "mkdir ${ARTIFACTS_TO_UPLOAD_DIR}"
+                sh "cp /u/<user id>/<folder>/${SOURCE_ARTIFACT} ${ARTIFACTS_TO_UPLOAD_DIR}/${SOURCE_ARTIFACT}"
+        		script {
+        			artifactoryServer.upload ARTIFACTORY_UPLOAD_SPEC
+        		}
+        	}
+        }
+
+        stage("Download compressed build output from Artifactory server") { 
+            steps { 
+                sh "mkdir ${DOWNLOADED_ARTIFACTS_DIR}"
+                script {
+                    artifactoryServer.download spec: ARTIFACTORY_DOWNLOAD_SPEC
+                }
+            }
+        }
+    }
+}
